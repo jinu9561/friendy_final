@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import web.mvc.dto.user.EmailVerificationDTO;
 import web.mvc.dto.user.UsersDTO;
+import web.mvc.entity.user.Users;
 
+import java.util.List;
 
 
 public interface UserService {
@@ -44,4 +46,7 @@ public interface UserService {
 
 ///////////////////////////////진우가 추가한 코드///////////////////////////////
     String updateReportResult(Long reportId, int result, int newState);
+
+    public List<UsersDTO> searchUsers(String nickname);
+
 }
