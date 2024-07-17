@@ -178,7 +178,7 @@ public class FriendController {
     }
 
     /**
-     * 친구 요청 목록 조회
+     * 친구 요청 목록 조회 
      */
     @GetMapping("/request/list")
     public ResponseEntity<List<FriendRequestDTO>> getAllFriendRequests(Principal principal) {

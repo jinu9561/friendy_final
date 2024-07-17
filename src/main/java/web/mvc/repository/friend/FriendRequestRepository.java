@@ -18,7 +18,7 @@ public interface FriendRequestRepository extends JpaRepository<FriendRequest, Lo
     /**
      * 친구 요청하기 (save)
      * (FRIEND_REQUEST 테이블 조회해서
-     *  sender_seq와 receiver_seq이 모두 존재하면서
+     *  sender_seq와 receiver_seq 이 모두 존재하면서
      *  request_status = 2(거절)가 아닌 테이블이 존재하면 친구요청 불가능)
      *  (요청 대기상태거나 이미 친구이면 요청 불가능)
      * */

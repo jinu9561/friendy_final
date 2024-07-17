@@ -76,7 +76,7 @@ public class UserController {
     @GetMapping("/search")
     public ResponseEntity<?> searchUsers(@RequestParam String nickname) {
         List<UsersDTO> users = userService.searchUsers(nickname);
-        return ResponseEntity.status(HttpStatus.OK).body(users);
+        return ResponseEntity.status(HttpStatus.OK).body(users); //
     }
 
 }

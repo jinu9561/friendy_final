@@ -94,5 +94,5 @@ public class Users {
     private List<PhotoBoardLike> photoBoardLikeList;
 
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<MeetUpBoardList> meetUpBoardLists;
+    private List<MeetUpBoardList> meetUpBoardLists; //
 }

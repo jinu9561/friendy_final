@@ -11,7 +11,7 @@ public interface JellyTransctionService {
     // 젤리 회득
     public String addJelly (Long userSeq, JellyTransactionDTO jellyTransactionDTO);
 
-    // 게시글 작성시 젤리 획득
+    // 게시글 작성 시 젤리 획득
     public String addJellyByWritePost(Long userSeq, JellyTransactionDTO jellyTransactionDTO);
 
     // 소모임 개최 호스트에게 젤리 지급

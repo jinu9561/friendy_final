@@ -25,5 +25,5 @@ public interface UserRepository extends JpaRepository<Users, Long> {
     public Users findUserByUserSeq(Long userSeq);
 
     @Query("select u from Users u where u.nickName like %?1%")
-    List<Users> findByNickNameContaining(String nickname);
+    List<Users> findByNickNameContaining(String nickname); //
 }

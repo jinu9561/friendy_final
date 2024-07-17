@@ -56,7 +56,7 @@ public class FriendServiceImpl implements FriendService {
             Users receiver = friendRequest.getReceiver();
 
             if (receiver.getUserSeq() != user.getUserSeq()) {
-                throw new IllegalStateException("이 친구 요청을 수락할 권한이 없습니다.");
+                throw new IllegalStateException("이 친구 요청을 수락할 권한이 없습니다. ");
             }
 
             // 친구 요청 수락 상태로 변경

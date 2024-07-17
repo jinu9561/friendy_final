@@ -33,7 +33,7 @@ public class JellyTransaction {
     private LocalDateTime transactionDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_seq")  // 외래 키를 지정
+    @JoinColumn(name = "user_seq")  //외래 키를 지정
     private Users user;
 
     @OneToOne(mappedBy = "jellyTransaction", cascade = CascadeType.ALL)

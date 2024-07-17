@@ -136,7 +136,7 @@ public class JellyTransctionSeriveImpl implements JellyTransctionService {
         log.info("JellyTransactionDTO: {}", jellyTransactionDTO);
 
         Users user = userRepository.findById(userSeq).orElseThrow(() -> {
-            log.error("해당 userSeq를 찾을 수 없습니다: {}", userSeq);
+            log.error("해당 userSeq를 찾을 수 없습니다: {} ", userSeq);
             return new GlobalException(ErrorCode.NOTFOUND_ID);
         });
 

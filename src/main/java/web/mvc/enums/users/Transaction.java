@@ -9,7 +9,7 @@ public enum Transaction {
     USE(0),
     CHAGE(1),
     REFUND(2),
-    ADD(3);
+    ADD(3); //
 
     private final int flag;
 }
