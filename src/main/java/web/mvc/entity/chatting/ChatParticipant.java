@@ -23,6 +23,5 @@ public class ChatParticipant {
     @JoinColumn(name = "chat_room_id")
     private ChattingRoom room;
 
-    // Additional fields like status (active, left, etc.) can be added here.
 }
 

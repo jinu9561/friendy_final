@@ -25,54 +25,60 @@ public class MeetUpBoard {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "meetup_seq")
     @SequenceGenerator(allocationSize = 1, sequenceName = "meetup_seq", name = "meetup_seq")
     private Long meetUpSeq;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_seq")
-    private Users user;
-
     @Column(length = 50)
     private String meetUpName;
 
     @Column(length = 100)
     private String meetUpDesc;
 
-    @OneToMany(mappedBy = "meetUpBoard", cascade = CascadeType.ALL)
-    private List<MeetUpBoardDetailImg> meetUpBoardDetailImgList;
-
     @CreationTimestamp
     private Date meetUpRegDate;
 
-    @OneToMany(mappedBy = "meetUpBoard", cascade = CascadeType.ALL)
-    private List<MeetUpRequest> meetUpRequestsList;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "interest_seq")
-    private Interest interest;
-
-    @OneToMany(mappedBy = "meetUpBoard", cascade = CascadeType.ALL)
-    private List<MeetUpBoardList> meetUpBoardList;
-
-    @OneToOne(mappedBy = "meetUpBoard", cascade = CascadeType.ALL)
-    private MeetupRecord meetupRecord;
-
     @UpdateTimestamp
     private Date meetUpUpdateTime;
-
-    @Column(nullable = true)
-    private String meetUpPeopleList;
 
     private int meetUpPwd;
 
     private int meetUpMaxEntry;
 
-    @ColumnDefault("0")
+    @ColumnDefault("1")
     private int nowEntry;
+
+    private Date meetUpDeadLine;
+
+    private int meetUpStatus;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "interest_seq")
+    private Interest interest;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_seq")
+    private Users user;
+
+    @OneToMany(mappedBy = "meetUpBoard", cascade = CascadeType.ALL)
+    private List<MeetUpBoardDetailImg> meetUpBoardDetailImgList;
+
+    @OneToOne(mappedBy = "meetUpBoard", cascade = CascadeType.ALL)
+    private MeetupRecord meetupRecord;
+
+    //아마 문제 없음
+
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "chattingroom_seq")
     private ChattingRoom chattingroom;
 
-    private Date meetUpDeadLine;
+    //문제 있음
+    @OneToMany(mappedBy = "meetUpBoard", cascade = CascadeType.ALL)
+    private List<MeetUpBoardList> meetUpBoardList;
 
-    private int meetUpStatus;
+    //문제 있음
+    @OneToMany(mappedBy = "meetUpBoard", cascade = CascadeType.ALL)
+    private List<MeetUpRequest> meetUpRequestsList;
+
+
+
+
+
 }

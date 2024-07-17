@@ -8,6 +8,7 @@ import lombok.*;
 @Builder
 @ToString
 public class MeetUpRequestDTO {
+    private String meetUpName;
     private Long meetUpRequestSeq;
     private Long meetUpSeq;
     private Long userSeq;

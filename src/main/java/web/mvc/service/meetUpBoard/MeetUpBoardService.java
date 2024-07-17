@@ -8,6 +8,7 @@ import web.mvc.dto.meetUpBoard.MeetUpBoardDTO;
 import web.mvc.dto.meetUpBoard.MeetUpDeleteDTO;
 import web.mvc.dto.meetUpBoard.MeetUpUpdateDTO;
 import web.mvc.entity.meetUpBoard.MeetUpBoard;
+import web.mvc.entity.meetUpBoard.MeetUpBoardList;
 
 
 import java.util.Date;
@@ -29,6 +30,11 @@ public interface MeetUpBoardService {
     Resource getDetailImg(String imgName);
 
    List<MeetUpBoard> findMeetUpByInterest(String interest);
+
+   List<MeetUpBoard> findMeetUpByUserSeq(Long userSeq);
+
+    List<MeetUpBoardList> findInviteMeetUpByUserSeq(Long userSeq);
+
 
     MeetUpBoard findMeetUpByBoardSeq(Long meetUpSeq);
 

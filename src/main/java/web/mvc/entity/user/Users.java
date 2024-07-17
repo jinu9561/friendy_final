@@ -84,7 +84,7 @@ public class Users {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<MessageLog> messageLogList;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL , orphanRemoval = true)
     private List<MeetUpRequest> meetUpRequest;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
@@ -93,6 +93,6 @@ public class Users {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<PhotoBoardLike> photoBoardLikeList;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MeetUpBoardList> meetUpBoardLists;
 }

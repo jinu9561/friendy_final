@@ -52,7 +52,7 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
         Long roomMasterSeq = Long.valueOf(queryParams.get("roomMasterSeq"));
         System.out.println(roomMasterSeq+"roomMasterSeq");
         MeetUpBoard meetUpBoard =meetUpBoardService.findMeetUpPeopleList(roomId);
-        System.out.println("++++++meetupboard+++++++" + meetUpBoard.getMeetUpPeopleList());
+//        System.out.println("++++++meetupboard+++++++" + meetUpBoard.getMeetUpPeopleList());
 //        String meetUpList = meetUpBoard.getMeetUpPeopleList();
 //        if ( meetUpList == "[]" || meetUpList==null ) {
 //            System.out.println("정상");

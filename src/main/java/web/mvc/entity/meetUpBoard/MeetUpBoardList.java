@@ -15,7 +15,7 @@ public class MeetUpBoardList {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "meetupboardlist_seq")
     @SequenceGenerator(allocationSize = 1, sequenceName = "meetupboardlist_seq", name = "meetupboardlist_seq")
-    private Long meetUpBoardListSeq;  // 오타 수정
+    private Long meetUpBoardListSeq;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="meetup_seq")
