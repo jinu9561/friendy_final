@@ -38,8 +38,6 @@ public class QMeetUpBoard extends EntityPathBase<MeetUpBoard> {
 
     public final StringPath meetUpName = createString("meetUpName");
 
-    public final StringPath meetUpPeopleList = createString("meetUpPeopleList");
-
     public final NumberPath<Integer> meetUpPwd = createNumber("meetUpPwd", Integer.class);
 
     public final web.mvc.entity.user.QMeetupRecord meetupRecord;

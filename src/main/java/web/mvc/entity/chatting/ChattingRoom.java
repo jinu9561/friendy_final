@@ -23,21 +23,21 @@ public class ChattingRoom {
     private Long chattingroomSeq;
     @Column(length = 200)
 
-    @OneToMany(mappedBy = "chattingroom", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "chattingroom", cascade = CascadeType.ALL  )
     private List<MessageLog> messageLogList;
 
     private String roomId;
     @CreationTimestamp
     private Date roomRegDate;
 
-    @OneToOne(mappedBy = "chattingroom", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "chattingroom", cascade = CascadeType.ALL )
     private MeetUpBoard meetUpBoard;
 
-    @OneToMany(mappedBy = "chattingroom", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "chattingroom", cascade = CascadeType.ALL )
     private List<NoticePost> noticePostList;
 
     /////////////////////////////진우가 추가한 코드/////////////////////////////
-    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL , orphanRemoval = true)
     private List<ChatParticipant> participants;
 
     public void addParticipant(Users user) {

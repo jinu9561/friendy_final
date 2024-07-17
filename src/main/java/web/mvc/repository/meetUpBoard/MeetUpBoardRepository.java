@@ -40,6 +40,8 @@ public interface MeetUpBoardRepository extends JpaRepository<MeetUpBoard, Long> 
     MeetUpBoard selectMeetUpByMeetUpName (String meetUpName);
 
 
+    @Query("select  m from MeetUpBoard  m where m.user.userSeq=?1")
+    List<MeetUpBoard> findMeetUpBoardByUserSeq(Long userSeq);
 
     @Modifying
     @Transactional

@@ -21,10 +21,21 @@ public interface MeetUpRequestRepository extends JpaRepository<MeetUpRequest, Lo
     List<Long> findUserSeqByMeetUpReqSeq(Long meetUpReqSeq);
 
 
+    @Query("select m from MeetUpRequest  m where  m.user.userSeq=?1")
+    List<MeetUpRequest> findMeetUpRequestByUserSeq(Long userSeq);
+
     @Modifying
     @Transactional
-    @Query("delete from MeetUpBoardList where meetUpBoard.meetUpSeq=?1 and user.userSeq=?2")
+    @Query("delete from MeetUpBoardList where meetUpBoard.meetUpSeq=?2 and user.userSeq=?1")
     void deleteAllByMeetUpBoardListSeq(Long userSeq, Long meetUpBoardSeq);
+
+
+    @Modifying
+    @Transactional
+    @Query("delete from MeetUpRequest where meetUpBoard.meetUpSeq=?1 and user.userSeq=?2")
+    void deleteMeetUpRequestBySeq(Long meetUpdBoardSeq ,Long userSeq);
+
+
 
 
 

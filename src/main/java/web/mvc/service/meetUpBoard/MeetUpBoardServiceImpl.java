@@ -23,6 +23,7 @@ import web.mvc.entity.user.Interest;
 import web.mvc.entity.user.Users;
 import web.mvc.exception.common.ErrorCode;
 import web.mvc.exception.common.GlobalException;
+import web.mvc.repository.chatting.ChattingRoomRepository;
 import web.mvc.repository.meetUpBoard.MeetUpBoardDetailImgRepository;
 import web.mvc.repository.meetUpBoard.MeetUpBoardListRepository;
 import web.mvc.repository.meetUpBoard.MeetUpBoardRepository;
@@ -50,6 +51,7 @@ public class MeetUpBoardServiceImpl implements MeetUpBoardService {
     private final InterestRepository interestRepository;
     private final CommonService commonService;
     private final MeetUpBoardListRepository meetUpBoardListRepository;
+    private final ChattingRoomRepository chattingRoomRepository;
     @Value("${meetUp.save.dir}")
     private String uploadDir;
     @Override
@@ -77,10 +79,10 @@ public class MeetUpBoardServiceImpl implements MeetUpBoardService {
         } catch (ParseException e) {
             throw new GlobalException(ErrorCode.WRONG_DATE);
         }
-
         Long interestSeq = meetUpBoardDTO.getInterestSeq();
         Optional<Interest> interestOptional = interestRepository.findById(interestSeq);
         ChattingRoom chattingRoom= new ChattingRoom();
+        System.out.println("채팅방 생성 ++++++++");
         if (interestOptional.isPresent()) {
             Interest interest = interestOptional.get();
             String interestCategory = interest.getInterestCategory();
@@ -94,19 +96,13 @@ public class MeetUpBoardServiceImpl implements MeetUpBoardService {
                     ChattingRoomDTO chattingRoomDTO = ChattingRoomDTO.builder()
                             .userId(userId)
                             .build();
+                    System.out.println("채팅방 생성 안되??");
                    chattingRoom= chattingRoomService.createChattingRoom(chattingRoomDTO);
-
                 }
-
             } catch (NumberFormatException e) {
                 throw new GlobalException(ErrorCode.WRONG_TYPE);
             }
-
-
-
-
-
-
+            System.out.println("여기서 없다고 ? ");
             MeetUpBoard meetUpBoard = MeetUpBoard.builder()
                     .user(users)
                     .meetUpName(meetUpBoardDTO.getMeetUpName())
@@ -115,19 +111,16 @@ public class MeetUpBoardServiceImpl implements MeetUpBoardService {
                     .interest(interest)
                     .meetUpPwd(meetUpBoardDTO.getMeetUpPwd())
                     .meetUpDeadLine(date)
+                    .nowEntry(1)
                     .meetUpMaxEntry(meetUpBoardDTO.getMeetUpMaxEntry())
                     .meetUpStatus(meetUpBoardDTO.getMeetUpStatus())
                     .chattingroom(chattingRoom)
                     .build();
             meetUpBoardRepository.save(meetUpBoard);
-
-
-
             MeetUpBoardList meetUpBoardList =  MeetUpBoardList.builder()
                     .meetUpBoard(meetUpBoard)
                     .user(users)
                     .build();
-
            meetUpBoardListRepository.save(meetUpBoardList);
 
 
@@ -192,28 +185,36 @@ public class MeetUpBoardServiceImpl implements MeetUpBoardService {
         return null;
     }
 
+
+    @Transactional
     @Override
     public String deleteBoard( String meetUpSeq, String meetUpPwd) {
         int insertPwd = Integer.parseInt(meetUpPwd);
 
-        meetUpBoardDetailImgRepository.deleteAllByMeetUpBoardSeq(Long.valueOf(meetUpSeq));
-        //사제하려는 게시글의 Seq
-        Long targetSeq = Long.valueOf(meetUpSeq);
-        //Seq로  삭제 시도하려는 게시글의 정보 뽑기.
-        MeetUpBoard meetUpBoard2 = meetUpBoardRepository.findPwdBySeq(targetSeq);
-        //삭제시도하는 게시글의 비밀번호
-        int boardPwd = meetUpBoard2.getMeetUpPwd();
-        //입력받은 비밀번호랑 삭제 시도하는 게시글 seq로 받아온 비밀번호가 일치하면
-        if (boardPwd == insertPwd) {
-            //해당 디티오의 seq로 삭제.
-            MeetUpBoard meetUpBoard = MeetUpBoard.builder()
-                    .meetUpSeq(targetSeq).build();
-            meetUpBoardRepository.delete(meetUpBoard);
-            return null;
-        } else {
-            String msg = " 비밀번호가 일치하지 않습니다";
-            return msg;
-        }
+        MeetUpBoard meetUpBoard=meetUpBoardRepository.findMeetUpBoardByMeetUpSeq(Long.valueOf(meetUpSeq));
+        ChattingRoom chattingRoom =meetUpBoard.getChattingroom();
+        System.out.println("채팅룸삭제 ?");
+        chattingRoomRepository.delete(chattingRoom);
+
+//        meetUpBoardDetailImgRepository.deleteAllByMeetUpBoardSeq(Long.valueOf(meetUpSeq));
+//        //사제하려는 게시글의 Seq
+//        Long targetSeq = Long.valueOf(meetUpSeq);
+//        //Seq로  삭제 시도하려는 게시글의 정보 뽑기.
+//        MeetUpBoard meetUpBoard2 = meetUpBoardRepository.findPwdBySeq(targetSeq);
+//        //삭제시도하는 게시글의 비밀번호
+//        int boardPwd = meetUpBoard2.getMeetUpPwd();
+//        //입력받은 비밀번호랑 삭제 시도하는 게시글 seq로 받아온 비밀번호가 일치하면
+//        if (boardPwd == insertPwd) {
+//            //해당 디티오의 seq로 삭제.
+//            meetUpBoard = MeetUpBoard.builder()
+//                    .meetUpSeq(targetSeq).build();
+//            meetUpBoardRepository.delete(meetUpBoard);
+//            return null;
+//        } else {
+//            String msg = " 비밀번호가 일치하지 않습니다";
+//            return msg;
+//        }
+        return"성공";
     }
 
     @Override
@@ -244,6 +245,21 @@ MeetUpBoard meetUpBoardForSeq=meetUpBoardRepository.findMeetUpBoardByRoomId(room
 
             List<MeetUpBoard> list =meetUpBoardRepository.selectMeetUpBoardByInterest(interest);
         return list;
+    }
+
+    @Override
+    public List<MeetUpBoard> findMeetUpByUserSeq(Long userSeq) {
+
+                List<MeetUpBoard> meetUpBoardList= meetUpBoardRepository.findMeetUpBoardByUserSeq(userSeq);
+        return meetUpBoardList;
+    }
+
+    @Override
+    public List<MeetUpBoardList> findInviteMeetUpByUserSeq(Long userSeq) {
+
+        List<MeetUpBoardList> meetUpBoardLists= meetUpBoardListRepository.searchMeetUpBoardListByUserSeq(userSeq);
+
+        return meetUpBoardLists;
     }
 
     @Override

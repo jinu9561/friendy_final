@@ -19,7 +19,7 @@ public class MeetUpSendDTO {
     private Long interestSeq;
     private String meetUpName;
     private String meetUpDesc;
-    private String meetUpPeopleList;
+    private List<Long> meetUpPeopleList;
     private List<String> meetUpBoardDetailImgNameList;
     private int meetUpPwd;
     private int meetUpMaxEntry;
