@@ -12,6 +12,7 @@ import web.mvc.entity.place.PlaceRecommendation;
 import web.mvc.enums.users.Classification;
 import web.mvc.enums.users.Gender;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -59,6 +60,9 @@ public class Users {
 
     private Gender gender;
 
+    // 새 필드 추가
+    private LocalDate lastJellyDate;
+
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private UserDetail userDetail;
 
@@ -90,5 +94,5 @@ public class Users {
     private List<PhotoBoardLike> photoBoardLikeList;
 
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<MeetUpBoardList> meetUpBoardLists;
+    private List<MeetUpBoardList> meetUpBoardLists; //
 }

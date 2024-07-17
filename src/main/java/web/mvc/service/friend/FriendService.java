@@ -14,7 +14,7 @@ public interface FriendService {
      * 친구 요청 보내기
      * @param sender 보내는 유저
      * @param receiver 받는 유저
-     * @return 친구 요청 객체
+     * @return 친구요청 객체
      */
     FriendRequest sendFriendRequest(Users sender, Users receiver);
 

@@ -32,7 +32,7 @@ public class CommunityBoardDTO {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime boardUpdateDate; //게시글 수정일
     private int commBoardCount; //조회수
-    private List<ReplyDTO> replyList; //댓글 리스트
+    private List<ReplyDTO> replyList; // 댓글 리스트
     private int photoBoardCount;
     // 사용자가 보낸 DTO에서 엔티티로 변환하는 메서드
     public CommunityBoard toEntity(Users user) {

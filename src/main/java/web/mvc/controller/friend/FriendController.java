@@ -37,15 +37,15 @@ public class FriendController {
      * 친구 요청 보내기
      */
     @PostMapping("/request")
-    public ResponseEntity<?> sendFriendRequest(@RequestParam String receiverId) {
+    public ResponseEntity<?> sendFriendRequest(@RequestParam String receiverNickname) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CustomMemberDetails userDetails = (CustomMemberDetails) authentication.getPrincipal();
 
         Users sender = userDetails.getUsers();
-        Users receiver = userRepository.findUserByUserId(receiverId);
+        Users receiver = userRepository.findUserByNickName(receiverNickname);
 
         if (receiver == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("해당 ID의 사용자를 찾을 수 없습니다.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("해당 닉네임의 사용자를 찾을 수 없습니다.");
         }
 
         try {
@@ -178,7 +178,7 @@ public class FriendController {
     }
 
     /**
-     * 친구 요청 목록 조회
+     * 친구 요청 목록 조회 
      */
     @GetMapping("/request/list")
     public ResponseEntity<List<FriendRequestDTO>> getAllFriendRequests(Principal principal) {
