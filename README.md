@@ -82,7 +82,8 @@
 | ![KakaoChatBot](https://img.shields.io/badge/kakao_ChatBot-ffcd00.svg?style=for-the-badge&logo=kakaoChatBot&logoColor=000000)                                           | 카카오 챗봇을 이용한 자동 응답 시스템을 제공합니다.                                                                                                                                                                               |
 | [![CoolSMS API](https://img.shields.io/badge/CoolSMS%20API-5B9BD5?style=for-the-badge&logo=coolpad&logoColor=white)](https://www.coolsms.co.kr/)                         | CoolSMS API를 통해 SMS를 전송합니다.                                                                                                                                                                                            |
 | ![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)                                                                     | 회원 인증시 Gmail API를 통해 이메일 알림을 보냅니다.                                                                                                                                                                                         |
-| ![businessjuso API](https://img.shields.io/badge/businessjuso-orange?style=for-the-badge&logo=businessjuso&logoColor=white)                                                                   주소 검색하는 기능.                                                                                                                                                                                         |
+| ![businessjuso API](https://img.shields.io/badge/businessjuso-orange?style=for-the-badge&logo=businessjuso&logoColor=white)                                             | 주소 검색하는 기능을 제공합니다.                                                                                                                                                                                            |
+
 
 ### ⛏️ 협업 툴 ⛏️
 
