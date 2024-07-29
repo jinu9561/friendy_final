@@ -305,9 +305,9 @@
 
 # 테스트 클래스 실행 시연
 
+![11111 (1) (1) (1)](https://github.com/user-attachments/assets/2aa0bec5-501f-4169-b543-1aff8c3cc248)
 
-
-![2222222](https://github.com/user-attachments/assets/18e53d75-a44e-4a1d-990f-edb2718aa7dd)
+![2222222](https://github.com/user-attachments/assets/2a801931-c9d0-40a6-99ca-bccae174e14b)
 
 ---
 
