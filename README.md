@@ -85,7 +85,7 @@
 
 
             |
-| ![businessjuso API](https://img.shields.io/badge/businessjuso-orange?style=for-the-badge&logo=businessjuso&logoColor=white)                                                                   | 주소 검색하는 기능.                                                                                                                                                                                         |
+| ![businessjuso API](https://img.shields.io/badge/businessjuso-orange?style=for-the-badge&logo=businessjuso&logoColor=white)                                                                   주소 검색하는 기능.                                                                                                                                                                                         |
 
 ### ⛏️ 협업 툴 ⛏️
 
