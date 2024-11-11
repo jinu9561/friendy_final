@@ -114,7 +114,7 @@
 ![adminflowchart](https://github.com/jinu9561/friendy/assets/82188917/7eb78428-31d4-4108-b4d1-763c289faf4e)
 
 ---
-## 🎨 레이아웃
+## 🎨 UI
 
 ![fffffff](https://github.com/jinu9561/friendy/assets/82188917/96128413-59a9-434f-bae5-a456f92b4059)
 
